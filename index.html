@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        let winCount = 0
+        let loseCount = 0
+        let element = ['rock', 'paper', 'scissors']
+        function computerPlay() {
+            let key = Math.floor(Math.random() * 3)
+            return element[key]
+        }
+        function game() {
+            function letsplay(playerSelection, computerSelection) {
+                
+                if ((playerSelection === 'rock' && computerSelection === 'paper') ||
+                    (playerSelection === 'scissors' && computerSelection === 'paper') ||
+                    (playerSelection === 'paper' && computerSelection === 'scissors')) {
+
+                    loseCount++
+                    return computerSelection + ' ' + 'beats' + ' ' + playerSelection
+                }
+                else if (playerSelection === computerSelection) {
+
+                    return 'you are even.'
+                }
+                else {
+
+                    winCount++
+                    return playerSelection + ' ' + 'beats' + ' ' + computerSelection
+                }
+            }
+            console.log(computerPlay());
+            let numberofrounds = 0;
+            for (let i = 0; i < 5; i++) {
+                const playerSelection = prompt('Enter your guess', 'rock')
+                const computerSelection = computerPlay();
+                console.log(letsplay(playerSelection.toLowerCase(), computerSelection.toLowerCase()))
+            }
+            if (winCount > loseCount) {
+                return 'Congratulation! you conquered the game'
+            }
+            else if (winCount === loseCount) {
+                return 'Oh! you draw'
+            }
+            else {
+                return 'Opps! you lose'
+            }
+        }
+        console.log(game());
+    </script>
+</body>
+
+</html>
